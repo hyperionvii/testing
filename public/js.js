@@ -41,8 +41,8 @@ jQuery(document).ready(function($) {
 
 function temperature(tempAmount) {
   if(tempAmount) {
-      $("#tempDisplay").html("<img src=" + icon + " style='width:150px; height:165px'/>");
-      $("#tempDisplay").html("<p class='text-center'><h2><strong>" + temp + "</strong></h2></p>");
+      $("#tempDisplay1").html("<img src=" + icon + " style='width:150px; height:165px'/>");
+      $("#tempDisplay2").html("<p class='text-center'><h2><strong>" + temp + "</strong></h2></p>");
   };
 
 // function rain(rainAmount) {
