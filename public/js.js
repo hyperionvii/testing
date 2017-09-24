@@ -31,8 +31,8 @@ jQuery(document).ready(function($) {
           ]).then(function() {
               console.log(tempAmount, rainAmount, humidityAm);
               temperature(tempAmount, icon);
-              rain(rainAmount);
-              humidity(humidityAm);
+              // rain(rainAmount);
+              // humidity(humidityAm);
           });
         }
     });
