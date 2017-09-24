@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 
           ]).then(function() {
               console.log(tempAmount, rainAmount, humidityAm);
-              temperature(tempAmount);
+              temperature(tempAmount, icon);
               rain(rainAmount);
               humidity(humidityAm);
           });
@@ -39,10 +39,10 @@ jQuery(document).ready(function($) {
   });
 });
 
-function temperature(tempAmount) {
+function temperature(tempAmount, icon) {
   if(tempAmount) {
       $("#tempDisplay1").html("<img src=" + icon + " style='width:150px; height:165px'/>");
-      $("#tempDisplay2").html("<p class='text-center'><h2><strong>" + temp + "</strong></h2></p>");
+      $("#tempDisplay2").html("<p class='text-center'><h2><strong>" + tempAmount + "</strong></h2></p>");
   };
 
 // function rain(rainAmount) {
