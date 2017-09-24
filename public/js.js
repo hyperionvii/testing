@@ -59,4 +59,4 @@ function temperature(tempAmount) {
 //   } else if (humidityAm < 50) {
 //     $("#humidityDisplay").html(" ")
 //   }
-// }
+}
