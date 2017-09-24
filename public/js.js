@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
     var tempAmount;
     var rainAmount;
     var humidityAmount;
+    var icon;
 
     $.ajax({
         url: "/api/" + state + "/" + city,
@@ -25,6 +26,8 @@ jQuery(document).ready(function($) {
 
           humidityAm = parseInt(parsed_json.current_observation.relative_humidity),
 
+          icon = parsed_json.current_observation.icon_url
+
           ]).then(function() {
               console.log(tempAmount, rainAmount, humidityAm);
               temperature(tempAmount);
@@ -37,35 +40,23 @@ jQuery(document).ready(function($) {
 });
 
 function temperature(tempAmount) {
-  if(tempAmount >= 85) {
-      $("#tempDisplay").html("<img src='images/hotweather.png' style='width:150px; height:165px'/> <p class='text-center'><strong> It's hot! The temperature is: " + tempAmount + "</p>");
+  if(tempAmount) {
+      $("#tempDisplay").html("<img src=" + icon + " style='width:150px; height:165px'/>");
+      $("#tempDisplay").html("<p class='text-center'><h2><strong>" + temp + "</strong></h2></p>");
+  };
 
-  } else if ( tempAmount < 85 && tempAmount >= 65 ) {
-      $("#tempDisplay").html("<img src='images/hotweather.png' alt='temp' style='width:150px; height:165px'/> <p class='text-center'> <strong> Warm! The temperature is: " + tempAmount + "</strong></p>");
+// function rain(rainAmount) {
+//   if(rainAmount <= .5) {
+//       $("#rainDisplay").html("<img src='images/no-rain.jpg' style='width:150px; height:165px'/><p class='text-center'><strong> No rain! </strong></p>");
+//   } else if (rainAmount > .5) {
+//       $("#rainDisplay").html("<img src='images/umbrella.jpg' style='width:150px; height:165px'/> <p class='text-center'><strong> It's raining...</strong></p>");
+//   }
+// };
 
-  } else if ( tempAmount < 65 && tempAmount >= 55) {
-      $("#tempDisplay").html("<img src='images/coldWeather.jpg' alt='temp' style='width:150px; height:165px'/> <p class='text-center'><strong> Getting chilly...The temperature is: " + tempAmount + "</strong></p>");
-
-  } else if ( tempAmount < 55 && tempAmount >= 32) {
-      $("#tempDisplay").html("<img src='images/coldWeather.jpg' alt='temp' style='width:150px; height:165px'/> <p class='text-center'> <strong> Take a jacket. The temperature is: " + tempAmount + "</strong></p>");
-
-  } else if ( tempAmount < 32 ) {
-      $("#tempDisplay").html("<img src='images/coldWeather.jpg' alt='temp' style='width:150px; height:165px'/> <p class='text-center'> <strong> It's freezing! The temperature is: " + tempAmount + "</strong></p>");
-  }
-};
-
-function rain(rainAmount) {
-  if(rainAmount <= .5) {
-      $("#rainDisplay").html("<img src='images/no-rain.jpg' style='width:150px; height:165px'/><p class='text-center'><strong> No rain! </strong></p>");
-  } else if (rainAmount > .5) {
-      $("#rainDisplay").html("<img src='images/umbrella.jpg' style='width:150px; height:165px'/> <p class='text-center'><strong> It's raining...</strong></p>");
-  }
-};
-
-function humidity(humidityAm) {
-  if(humidityAm >= 50) {
-    $("#humidityDisplay").html("<img src='images/humid.jpg' style='width:150px; height:165px'/>");
-  } else if (humidityAm < 50) {
-    $("#humidityDisplay").html(" ")
-  }
-}
+// function humidity(humidityAm) {
+//   if(humidityAm >= 50) {
+//     $("#humidityDisplay").html("<img src='images/humid.jpg' style='width:150px; height:165px'/>");
+//   } else if (humidityAm < 50) {
+//     $("#humidityDisplay").html(" ")
+//   }
+// }
